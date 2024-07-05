@@ -1,0 +1,65 @@
+/* Style the navigation bar */
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+  background: linear-gradient(to bottom, #ff758c 0%, #ff7eb3 100%);
+}
+
+/* Navbar links */
+.navbar a {
+  float: left;
+  text-align: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 15%;
+}
+.navbar div.nav-header {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white; 
+  font-size: 17px;
+  
+}
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  background-color:rgb(150, 184, 150);
+}
+
+/* Current/active navbar link */
+div.container-fluid { 
+  margin: 0px;
+  margin-bottom: 60px;
+}
+.breadcrumb {
+  margin-top: 50px;
+}
+.modal-dialog {   
+  margin: 0px auto;
+}
+.modal-body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, #D4145A 0%, #FBB03B 100%);
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+}
+body{
+  background-color: seashell;
+}
+.panel-default>.panel-heading {
+  background-color: aqua; 
+}
+
+
+

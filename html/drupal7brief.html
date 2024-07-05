@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container-fluid">
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <a class="active" href="../index.html"><i class="glyphicon glyphicon-home"></i></a>
+		<div class="nav-header" style="text-align: center;width:auto">Drupal Interview</div>
+		
+	</nav>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+		  <li class="breadcrumb-item"><a href="drupal7.html">Drupal 7</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">Brief</li>
+		</ol>
+	  </nav>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">1</span>What are the five conceptual layers in a Drupal system?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li><strong>Data (nodes, etc.)</strong>: Before anything can be displayed on the site, it must be input as data.</li>
+              <li><strong>Modules</strong>: Modules are functional plugins that are either part of the Drupal core or are contributed modules that build on Drupal's core functionality.</li>
+              <li><strong>Blocks and menus</strong>: Blocks can be used to present anything, so just about any piece of content on a Drupal site (other than main content, breadcrumbs, and primary/secondary menus) is usually a block. Blocks are an extensible core feature of Drupal with a simple API provided by the block module. Blocks are similar to "widgets" in content management systems, but are highly generalized. Menus are a collection of links (menu items) used to navigate a website. The Menu module provides an interface to control and customize the menu system that comes with Drupal. By default, new menu items are placed inside a built-in menu labeled Navigation, but administrators can also create custom menus.</li>
+              <li><strong>User permissions</strong>: User permissions are defined for various roles and users are assigned to these roles in order to grant them the defined permissions.</li>
+              <li><strong>Themes and templates</strong>: The top conceptual layer of the drupal architecture is the theme. This consists primarily of XHTML and CSS, with some PHP variables intermixed, so Drupal-generated content can go in the appropriate spots. Also included with each theme is a set of functions that can be used to override standard functions in the modules in order to provide complete control over how the modules generate their markup at output time. A theme may contain one or more templates, depending on the complexity of the site and the way it has been designed.</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">2</span>What is drupal's taxonomy system and what are some of its key features?</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">Drupal comes with a built in taxonomy system that allows for categorization of the nodes on a site.</p>
+            <p class="answer">The taxonomy system allows for arbitrary definition of terms, as well as arbitrary organization of those terms into vocabularies. There is no limit to the number of vocabularies that can be created, nor is there any limit to the number of terms that can be included in a vocabulary.</p>
+            <p class="answer">A vocabulary can also have free tagging which means that, instead of entering specific terms ahead of time, users may enter tags freely at the time the content is created and those tags automatically become terms in that vocabulary.</p>
+            <p class="answer">Drupal's taxonomy system is one if its most powerful and flexible features.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">3</span>Describe the features and uses of the Views module?</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">Using the Views module, you can fetch content from the database of your site and present it to the user as lists, posts, galleries, tables, maps, graphs, menu items, blocks, reports, forum posts etc. Different content types including nodes, users, and other bundles can be displayed.</p>
+            <p class="answer">Views UI, a submodule within Views, provides a graphical interface underneath which lies a powerful SQL query builder that can access virtually any information in your database and display it in any format.</p>
+            <p class="answer">Different displays can present the query results as pages with fixed URLs on your site (or URLs accepting arguments), blocks, feeds, or panel panes.</p>
+            <p class="answer">You can also use Views to present related content or implement contextual filters. For example, you can display a list of users along with links to the content they have created and/or you can display customized content to a user according to their user ID.</p>	
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">4</span>DRUPAL 7 - how to create Sub themes?</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">Creating a sub-theme is really simple. A sub-theme inherits a lot of the design resources from its parent theme. We can have multiple sub-themes inheriting only one base theme.</p>
+	<p class="answer">It is important to know that what a sub-theme inherits from its parent theme.</p>
+	<p class="answer">A sub theme will inherit:</p>
+	<p class="answer">
+		<ul>
+		  <li>All style sheets</li>
+		  <li>Template files</li>
+		  <li>Functions and overrides defined in the template.php</li>
+		</ul>
+	</p>
+	<p class="answer">A sub-theme will not inherit:</p>
+	<p class="answer">
+		<ul>
+		  <li>Logos and Favicons</li>
+		  <li>Block regions</li>
+		  <li>Advanced theme settings</li>
+		</ul>
+	</p>
+	<p class="answer">Creating a sub theme :</p>
+	<p class="answer">Theme Directory: Create a directory in your custom theme directory in the same way you create a theme. Give it a name. For example: mysubtheme.</p>
+	<p class="answer">.info file: Create an .info file in the directory mysubtheme as similar to the parent theme. The only difference will be the following line:</p>
+	<p class="answer">base theme = theme_name</p>
+	<p class="answer">Logo: Add the logo in the sub-theme directory.</p>
+	<p class="answer">Screenshot: Theme screenshot is inherited from the base's theme. To override the same, just create a new screenshot.png in the sub theme directory.</p>
+	<p class="answer">Style Sheets: You must declare at least one stylesheet in your sub-theme for any of the parent theme's stylesheets to be inherited. To override any particular css file (for instance, style.css), add the following line in your .info file and add a new css file with the same name in your sub-theme's directory.</p>
+	<p class="answer">stylesheets[all][] = style.css</p>
+	<p class="answer">Javascripts: All the js files defined in the parent theme will be inherited. To override any particular js file, add the following line in your .info file and add a new js file (for instance, script.js), with the same name in your sub-theme's directory.</p>
+	<p class="answer">scripts[] = script.js</p>
+	<p class="answer">Regions: You can declare a new set of regions in the sub-theme. To inherit the custom regions of the parent theme, the regions should be copied in the sub-theme's .info file.</p>
+	<p class="answer">Template Files: You can add any template files in your sub theme. If the template file is found in your sub-theme's directory, then Drupal will override the parent's template files. Otherwise, it will use the parent's template files.
+                  Images: The images used in the theme can also be copied in the sub theme directory. If the image is found in your sub-theme's directory then Drupal will override the parent theme's image with the same name. Otherwise, it will use the parent's image.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">5</span>Explain features ? How do features work?</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">The features module enables the capture and management of features in Drupal. A feature is a collection of Drupal entities which taken together satisfy a certain use-case.</p>
+	<p class="answer">Features provides a UI and API for taking different site building components from modules with exportables and bundling them together in a single feature module. A feature module is like any other Drupal module except that it declares its components (e.g. views, contexts, CCK fields, etc.) in its .info file so that it can be checked, updated, or reverted programmatically.</p>
+	<p class="answer">The purpose of the Features module is to copy configuration setups from one drupal site to another. It creates "packages" of the settings that can be shared among different sites. Today it is used in almost every development workflow to deploy changes from one environment to the other.</p>
+	<p class="answer">Assume that the developer creates a new content type and he wants to copy it to the development server. Here is what he will do with features:</p>
+	<p class="answer">
+		<ul>
+		  <li>He adds the content type to an existing feature (or creates a new one). features will automatically detect any dependencies (eg modules implementing the fields)</li>
+		  <li>He downloads the features and copies it to the custom modules folder. Then he pushes it to the version control system.</li>
+		  <li>The features module is pulled to the development site</li>
+		  <li>The feature is enabled and the content type is automatically created.</li>
+		</ul>
+	</p>
+	<p class="answer">Now assume that he makes some changes to the content type. Here is how he copies to changes to the site:</p>
+	<p class="answer">
+		<ul>
+		  <li>Updates the feature using the features UI or using drush (this causes the feature to pick up the changes)</li>
+		  <li>Pushes the feature to the live site</li>
+		  <li>He reverts the feature in the live site so that the changes are activated.</li>
+		</ul>
+	</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">6</span>How to create a responsive theme in drupal 7?</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">a) Understand your design and decide on the breakpoints.</p>
+	<p class="answer">b) Start with your theme info file</p>
+	<p class="answer">
+		name = Responsive<br/>
+		description = A responsive layout for a corporate site.<br/>
+		version = VERSION<br/>
+		core = 7.x<br/>
+		stylesheets[all][] = css/style.css<br/>
+	</p>
+	<p class="answer">c) Create HTML5 pages for each unique page in your website.</p>
+	<p class="answer">Start with the mobile design and move the way up for all the breakpoints. Convert the HTML5 pages to template files. This step is similar to that of any general drupal theme except that the same template is applicable for multiple breakpoints. If you are using HTML5 make sure you start with the declaration in your html.php.tpl file.</p>
+	<p class="answer">Validate the outline your page generates using an outliner. Structure the HTML5 tags and header tags to achieve the desired outline. Working your way up from the lowest to the highest breakpoint, i.e starting from the mobile design, is an important aspect of the mobile first approach.</p>
+	<p class="answer">d) Segregate the styles for the different breakpoints using media queries. Detailed below options for using media queries.</p>
+	<p class="answer"><strong>Multifile option: Embed your media queries in the .info file</strong></p>
+	<p class="answer"> stylesheets[all][] = css/style.css<br/>
+		stylesheets[print][] = css/print.css<br/>
+		stylesheets[all and (min-width: 600px)][] = css/grid-600.css<br/>
+		stylesheets[all and (min-width: 600px)][] = css/style-600.css<br/>
+		stylesheets[all and (min-width: 480px)][] = css/style-480.css<br/>
+		stylesheets[all and (min-width: 960px)][] = css/style-960.css<br/>
+		stylesheets[all][] = css/fonts.css
+	</p>
+	<p class="answer"><strong>Single file option: Write media queries inline in css files</strong></p>
+	<p class="answer">media all and (min-width: 461px) and (max-width: 900px) {</p>
+	<p class="answer">//embed styles here</p>
+	<p class="answer">}</p>
+	<p class="answer">e) Embed viewport & other mobile/handheld device specific meta tags in the html.php.tpl file</p>
+	<p class="answer"><br>
+		&lt;meta content="width" name="MobileOptimized"/&gt;<br>
+		&lt;meta content="true" name="HandheldFriendly"/&gt;<br>
+		&lt;meta content="width=device-width" name="viewport" /&gt;<br>
+		&lt;meta content="on" http-equiv="cleartype"/&gt;<br>
+	</p>
+	<p class="answer">f) To enable IE support, add Html5shiv, Respond.js and Selectivizr.js files to your theme.</p>
+	<p class="answer">g) Test your theme in a default Drupal installation. Voila! Here we have a Drupal 7 theme that is responsive.</p>
+	<p class="answer"><strong>Media Queries</strong></p>
+	<p class="answer">CSS3 Media queries allow you to check media type and media features and conditionally load style sheets. This is commonly used to distinguish between 'screen' and 'print'. The media type print is used to define the printer friendly styles.</p>
+	<p class="answer">
+		media print {<br/>
+		//embed print stylesheet<br/>
+		}
+	</p>
+	<p class="answer">The below media query defines the style sheet for all media types. Also demonstrates the use of the width media feature. Allows us to define styles for screen widths between 461px and 960px</p>
+	<p class="answer">
+		@media all and (min-width: 461px) and (max-width: 900px) {<br/>
+		//embed styles here<br/>
+		}
+	</p>
+	<p class="answer">Media features are used to define the properties of the user agent. Some of the other Media features include height, orientation and aspect-ratio.</p>
+	<p class="answer"><strong>Mobile friendly meta tags to the html.tpl.php</strong></p>
+	<p class="answer">&lt;meta name="MobileOptimized" content="width"/&gt;</p>
+	<p class="answer">Use to set Narrow layout in devices , introduced by Microsoft.</p>
+	<p class="answer">&lt;meta name="HandheldFriendly" content="true"/&gt;</p>
+	<p class="answer">The HandheldFriendly meta-tag was used initially by older Palm and Blackberry models.</p>
+	<p class="answer">&lt;meta content="width=device-width" name="viewport"/&gt;</p>
+	<p class="answer">Certain browser devices display the web pages by auto zooming. To override this auto zoom feature for already optimized pages, the viewport meta tag is used. In our case the width property is used. Here the 'width' property is set to the viewport of the device. The other viewport properties includes the initial-scale property which controls the zoom level when the page is first loaded, the maximum-scale, minimum-scale, and user-scalable properties which control how the user zooms in and out of the page. The viewport meta tag is widely supported by modern smartphones and not limited to iOS, and Android devices.</p>
+	<p class="answer">&lt;meta http-equiv="cleartype" content="on"/&gt;</p>
+          </div>
+        </div>     
+      </div>
+ </div>
+     
+ 
+</div>
+<footer class="footer">
+	<div class="container">
+	</div>
+  </footer>
+</body>
+</html>
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="../js/index.js"></script>

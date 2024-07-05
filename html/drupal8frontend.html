@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container-fluid">
+    
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <a class="active" href="../index.html"><i class="glyphicon glyphicon-home"></i></a>
+    <div class="nav-header" style="text-align: center;width:auto">Drupal Interview</div>
+    
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="drupal8.html">Drupal 8</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Front End</li>
+    </ol>
+  </nav>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">1</span>How to include javascript file in Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">In Drupal 8 Libraries are simply collections of CSS or JS files bundled together under a uniquely identified library name. We can include the library in the theme-name.libraries.yml file in the below method.</p>
+  <pre style="overflow-x: auto;">    
+    library-name:
+      js:
+        js/script.js: {}        
+  </pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">2</span>How to create a custom theme in Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+           <ul>
+             <li>Create a folder with the theme name inside the themes folder from the roor directory.</li>
+             <li>Create a file with a name theme_name.info.yml.		ss</li>
+             <li>theme_name.info.yml file will be look like the below</li>
+            </ul>
+<pre>              
+  name: 'theme_name'
+  type: theme
+  description: 'Custom drupal 8 theme'
+  stylesheets:
+    all:
+      - css/styles.css
+  js:
+    js/main.js: {}
+  regions:
+    header: 'Header'
+    messages: 'Messages'
+    navigation: 'Navigation'
+    sidebar: 'Sidebar'
+    sidebar_two: 'Sidebar Two'
+    content: 'Main content'
+    footer: 'Footer'
+  features:
+    - favicon
+    - logo
+  version: 8.0.x
+  core: 8.x
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">3</span>How to declare the css and js in the libraries.yml file?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Create library-name.libraries.yml file in the themes folder and add the below line
+           
+<pre style="overflow-x: auto;">             
+  base:
+  version: 1.x
+  css:
+    theme:
+      css/style.css: {}
+    layout:
+      https://www.example.com/css/main.css: { type: external, minified: true }
+  js:
+    js/main.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once  
+</pre>
+          
+              Finally mention the below code in the theme_name.info.yml file.
+<pre>
+  libraries:
+    theme_name/base
+</pre>
+              
+          
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">4</span>How many ways to attach the js file from the libraries.?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">		
+              You can attach an asset library to a Twig template using the attach_library() function in any *.html.twig, file like so:
+          </p>
+<pre>    
+  {{ attach_library('theme_name/base') }}
+  markup {{ message }}    
+</pre>
+<p class="answer">	
+  In the theme hook function add the below code 
+</p>
+<pre>    
+  function themename_preprocess_page(&$variables) {
+    $variables['#attached']['library'][] = 'theme_name/base';
+  }
+</pre>  
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">5</span>Explain about Sub-Theme inheritance</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+<table><tbody><tr><th>Property</th>
+<th>Inherited</th>
+</tr><tr><td>CSS</td>
+<td>Yes</td>
+
+</tr><tr><td>JS</td>
+<td>Yes</td>
+
+</tr><tr><td>Templates</td>
+<td>Yes</td>
+
+</tr><tr><td>Screenshot</td>
+<td>Yes</td>
+
+</tr><tr><td>Regions</td>
+<td>No</td>
+
+</tr><tr><td>Features</td>
+<td>No</td>
+
+</tr><tr><td>Theme Settings</td>
+<td>Yes</td>
+
+</tr><tr><td>Core Version</td>
+<td>No</td>
+
+</tr><tr><td>Logo</td>
+<td>Yes</td>
+
+</tr><tr><td>Favicon</td>
+<td>No</td>
+
+</tr><tr><td>Color module support</td>
+<td>No</td>
+
+</tr><tr><td>Block placement and block templates</td>
+<td>Yes, with extra steps required</td>
+
+</tr><tr><td>Breakpoints (via <em>themename.breakpoints.yml</em>)</td>
+<td>&lt;TBD&gt;</td>
+
+</tr><tr><td>Libraries (via <em>themename.libraries.yml</em>)</td>
+<td>Yes</td>
+
+</tr></tbody></table>                
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">6</span>Mandatory keys in theme .info file</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>name</li>
+              <li>type</li>
+              <li>core</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">7</span>How do I translate strings in Twig templates?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  {% trans %}
+    {{ author.username }}
+  {% endtrans %}              
+</pre>
+      </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">8</span>How to display the variable in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  {{ variable_name }}
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">9</span>For loop exmaple in twig templates?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>             
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">10</span>How to add class in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  {{ attributes.addClass('my-class') }}
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">11</span>How to add multiple classes in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  {%
+    set classes = [
+      'red',
+      'green',
+    ]
+  %}
+  {{ attributes.addClass(classes) }}              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">12</span>How to declare normal and array variable in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  {% set normal_variable = 'test' %}
+  {% set array_var = ['test1', 'test2', 'test3'] %}
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">13</span>How to print all classes from attributes in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  {{ attributes.class }}
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">14</span>How to use if statements in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  {% if page.header  %}
+    {{ page.banner }}
+  {% elseif  page.banner %}
+    {{ page.banner }}
+  {% else %}             
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">15</span>How to print rendered image field?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  {% set field_image = content.field_image|render %}
+  {% if field_image %}
+    <span><</span>div1 class="field-image-wrapper"<span>></span>{{ field_image }}<span><</span>/div<span>></span>
+  {% endif %}             
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">16</span>List some url related function in twig.</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>             
+  file_url($uri) :
+
+    This helper function accepts a URI to a file and creates a relative URL path to the file.
+
+    {{ file_url(node.field_example_image.entity.uri.value) }}
+
+  link($text, $uri, $attributes) :
+
+    This helper function accepts as first parameter the text and as second parameter the uri
+
+    Examples:
+      {{ link(item.title, item.uri, { 'class':['foo', 'bar', 'baz']} ) }}
+
+  path($name, $parameters, $options) :
+
+    Generates a [relative] URL path given a route name and parameters.
+
+    {# Link to frontpage view. #}
+    <span><</span>a href="{{ path('view.frontpage.page_1') }}"<span>></span>{{ 'View all content'|t }}<span><</span>/a>
+
+    {# Link to user entity/profile page. #}
+    <span><</span>a href="{{ path('entity.user.canonical', {'user': user.id}) }}"<span>></span>{{ 'View user profile'|t }}<span><</span>/a>
+
+    {# Link to node page. #}
+    <span><</span>a href="{{ path('entity.node.canonical', {'node': node.id}) }}"<span>></span>{{ 'View node page'|t }}<span><</span>/a>
+
+  url($name, $parameters, $options) :
+
+    Generate an absolute URL given a route name and parameters:
+
+    <span><</span>a href="{{ url('view.frontpage.page_1') }}"<span>></span>{{ 'View all content'|t }}<span><</span>/a>
+
+    Generate an absolute URL to the current url:
+
+    <span><</span>a href="{{ url('<current>') }}"<span>></span>{{ 'Reload'|t }}<span><</span>/a>
+
+    Generate an absolute URL to the front page:
+
+    <span><</span>a href="{{ url('<front>') }}"<span>></span>{{ 'Home'|t }}<span><</span>/a>              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">17</span>How to suggest the custom template file from controller page?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            If we have a twig template file called 'view-env-variables.html.twig', then we can suggest this template file from the controller by the below method,
+<pre>              
+  namespace Drupal\env_variables\Controller;
+
+  use Drupal\Core\Controller\ControllerBase;
+
+  /**
+    * Controller routines for env_variables routes.
+  */
+  class ViewEnvironmentVariablesController extends ControllerBase {
+
+    public function view_env_variables() {
+      return [
+        '#theme' => 'view_env_variables',
+        '#result' => $_ENV,
+      ];
+    }
+  }              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">18</span>How to print all data in the variables in the twig template?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  {{ dump(variable) }}
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">19</span>Which one is the correct method to include the js file to avoid high load?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          We can add the js file in the twig template using the below method,
+          <pre>{{ attach_library('theme_name/library_name') }}</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">20</span>Example of using without filter in twig?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  {{content | without(title, description)}}
+  {{content.title}}
+  {{content.description}}
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">21</span>How will you display the region in twig file?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  {% if page.header %}
+    {{ page.header }}
+  {% endif %}
+</pre>
+          </div>
+        </div>     
+      </div>
+      
+      
+ </div>
+
+</div>
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="../js/index.js"></script>

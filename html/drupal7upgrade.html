@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container-fluid">
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <a class="active" href="../index.html"><i class="glyphicon glyphicon-home"></i></a>
+		<div class="nav-header" style="text-align: center;width:auto">Drupal Interview</div>
+		 
+	</nav>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+		  <li class="breadcrumb-item"><a href="drupal7.html">Drupal 7</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">Upgrade</li>
+		</ol>
+	  </nav>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3>The following steps describes the drupal upgrades from drupal 6 version to drupal 7 version,</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">1) Check on the Drupal 7 status of your contributed and custom modules and  themes of the prior version.</p>
+	 <p class="answer">2) Update to the latest available version of Drupal 6.x</p>
+	 <p class="answer">
+		<ul>
+		  <li>Go to Administration > Configuration > Development > Maintenance mode.Enable the "Put site into maintenance mode" checkbox and save the configuration.</li>
+		  <li>Remove all old core files and directories, except for the 'sites' directory and any custom files you added elsewhere. If you made modifications to files like .htaccess or robots.txt, you will need to re-apply them from your backup, after the new files are in place.</li>
+		  <li>Download the latest Drupal 6.x release and extract the files into your root directory except the sites folder.</li>
+		  <li>Re-apply any modifications to files such as .htaccess or robots.txt.</li>
+		  <li>Run update.php by visiting http://www.example.com/update.php (replace www.example.com with your domain name). This will update the core database tables.</li>
+		  <li>Go to Administration > Configuration > Development > Maintenance mode.   Disable the "Put site into maintenance mode" checkbox and save the   configuration.</li>
+		  <li>Go to Administration > Reports > Status report. Verify that everything is working as expected.</li>
+		</ul>
+	 </p>
+	 <p class="answer">3) Go to Administer > Site configuration > Site maintenance. Select   "Off-line" and save the configuration.</p>
+	 <p class="answer">4) Go to Administer > Site building > Themes. Enable "Garland" and select it as the default theme.</p>
+	 <p class="answer">5) Go to Administer > Site building > Modules. Disable all modules that are not listed under "Core - required" or "Core - optional". It is possible that some modules cannot be disabled, because others depend on them. Repeat this step until all non-core modules are disabled. If you know that you will not re-enable some modules for Drupal 7.x and you no longer need their data, then you can uninstall them under the Uninstall   tab after disabling them.</p>
+	 <p class="answer">6) Remove the file sites/default/default.settings.php</p>
+	 <p class="answer">7) Remove all old core files and directories, except for the 'sites' directory   and any custom files you added elsewhere. If you made modifications to files like .htaccess or robots.txt, you will need to re-apply them from your backup, after the new files are in place.</p>
+	 <p class="answer">8) If you uninstalled any modules, remove them from the sites/all/modules and other sites/*/modules directories. Leave other modules in place, even though they are incompatible with Drupal 7.x.</p>
+	 <p class="answer">9) Download the latest Drupal 7.x release from http://drupal.org to a   directory outside of your web root. Extract the archive and copy the files   into your Drupal directory and don't replace the sites folder.</p>
+	 <p class="answer">10) Re-apply any modifications to files such as .htaccess or robots.txt.</p>
+	 <p class="answer">11) Make your settings.php file writeable, so that the update process can convert it to the format of Drupal 7.x. settings.php is usually located in sites/default/settings.php.</p>
+	 <p class="answer">12) Run update.php by visiting http://www.example.com/update.php replace  www.example.com with your domain name). This will update the core database tables.</p>
+	 <p class="answer">13) Backup your database after the core upgrade has run.</p>
+	 <p class="answer">14) Replace and update your non-core modules and themes.</p>
+	 <p class="answer">15) Go to Administration > Reports > Status report. Verify that everything is working as expected.</p>
+	 <p class="answer">16) Go to Administration > Configuration > Development > Maintenance mode.Disable the "Put site into maintenance mode" checkbox and save the configuration.</p>	 
+          </div>
+        </div>     
+      </div>            
+ </div>
+     
+ 
+</div>
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="../js/index.js"></script>

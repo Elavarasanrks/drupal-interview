@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+ 
+</head>
+<body>
+
+<div class="container-fluid">
+    
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <a class="active" href="../index.html"><i class="glyphicon glyphicon-home"></i></a>
+    <div class="nav-header" style="text-align: center;width:auto">Drupal Interview</div> 
+    
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="drupal7.html">Drupal 7</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Performance</li>
+    </ol>
+  </nav>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">1</span>Drupal 7 Performance Optimization Options and Checklist</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ol>
+              <li>Configuration Best Practices</li>			
+              <li>Views Caching</li>
+              <li>System Administration</li>
+              <li>Cache Replacements</li>
+              <li>Cache and Optimize Specific Components</li>
+              <li>External Caching</li>
+              <li>Cache Warming / Priming</li>
+              <li>Services</li>
+              <li>Drupal-Specific Hosting</li>
+              <li>Tools</li>
+              <li>Useful References</li>
+            </ol>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">2</span>Configuration Best Practices</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <ul>
+              <li>Disable unused and non-essential modules.  Loading additional code unnecessarily will consume additional server resources.</li>
+              <li>Disable the Statistics module as it writes to the database on every hit.  You're probably using Google Analytics anyway.</li>
+              <li>Disable the Update Manager module on Production.  As part of your DevOps process, after synchronizing your Development/Integration server with Staging or Production, enable it there.  Your Production server doesn't need to spend time polling drupal.org.</li>
+              <li>Enable site-wide caching over at Administer -> Configuration -> Development -> Performance.</li>
+              <li>Convert non-transparent images to JPGs.</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">3</span>Views Caching</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">As the Views module is the most popular contributed module, most of us are using it to display content is various ways.  Views instances should be cached so that when accessed, a cached copy is returned instead of having to rebuild each view every time it's loaded.  There are two (2) options here.</p>
+
+            <ul>
+              <li>Time-based caching for each view display (ships with Views)</li>
+              <li>Views Content Cache: Update each view only when its constituent element have been updated.</li>
+            </ul>
+            <p class="answer">If you've got a lot of content and are using Views paging, you may want to consider using Views Litepager.It will work around slow COUNT queries on InnoDB tables, those using the default table-engine type in MySQL.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">4</span>System Administration</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <ul>
+              <li>Alternative PHP Cache (APC) for PHP  5.5.  (This is part of core PHP in newer versions.)</li>
+              <li>PHP-FPM (a FastCGI implementation) instead of mod_php.</li>
+              <li>Nginx: An alternative to the ubiquitous Apache Web server.</li>
+              <li>Syslog: OS-integrated logging: Send logs to your operating system instead of writing to your database.</li>
+              <li>Solid state drives (SSDs):  These cost more, but if you can afford it, use them instead of classic hard disk drives (HDDs) in your server hardware.</li>
+              <li>Disable automatic cron &amp; run a proper cron job:  Ensure that users aren't running periodic tasks before they see content.  It's usually not necessary to run it more than once per day, but if more granular control (over which tasks are run when) is necessary, one can set up the Elysia Cron module.</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">5</span>Cache Replacements</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">The default Drupal-site caching is not very efficient.  As a result, alternative mechanisms have sprung up to fill the void.</p>
+
+		<ul>
+			<li>Memcache API and Integration or Memcache Storage</li>
+			<li>File Cache</li>
+			<li>Redis (a key-value store)</li>
+		</ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">6</span>Cache and Optimize Specific Components</h3></div>
+        </div>
+        <div class="modal-body">            
+          <div>
+            <p class="answer">If there are specific components of your site that need a performance boost, the following list will help you target certain areas in specific ways.</p>
+
+		<ul>
+			<li>Cache entities with Entity Cache.</li>
+			<li>Cache entity view modes with Display Cache.</li>
+			<li>Improve CSS/JS performance with Advanced CSS/JS Aggregation or Aggregate cache.</li>
+			<li>Cache Panels content with Panels Content Cache or Panels Hash Cache.</li>
+			<li>Load images only when needed with Image Lazyloader or similar modules.</li>
+			<li>Minify JS files with Speedy.</li>
+			<li>React to page-not-found errors quicker with Fast 404.</li>
+			<li>Speed up your site by removing no-longer-available modules with Missing Module.</li>
+			<li>Cache components with logged-in users via Authenticated User Page Caching (Authcache).</li>
+		</ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">7</span>External Caching</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">It's possible to place another application in front of yours that will serve cached copies of your Web pages.  This is called "HTTP acceleration" or "reverse proxy caching".  There's really only one game in town, but it has some helpful add-ons.</p>
+
+		<ul>
+			<li>Varnish</li>
+			<li>Varnish HTTP Accelerator Integration</li>
+			<li>Cache Expiration</li>
+		</ul>
+		<p class="answer">If you don't have access to Varnish (usually because of shared hosting), then you can run Boost instead.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">8</span>Cache Warming / Priming</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">If caching systems are used heavily (for a lot of content), it may take quite a while for cached data to get rebuilt whenever caches are cleared.  If this is the case, it's worth considering a tool to rebuild these after any clearing happens.  Otherwise, the first users hitting the site afterwards will experience slow page-load times.</p>
+
+		<ul>
+			<li>Drush Entity Cache Loader</li>
+			<li>Cache Warmer</a></li>
+		</ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">9</span>Services</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">There are several services that can be used in conjunction with your Drupal site to monitor and/or increase performance.</p>
+
+		<ul>
+			<li>Content delivery networks (CDNs) such as CloudFlare</li>
+			<li>ProjectPAAS along with its connector module: Drupal-specific performance service.</li>
+			<li>New Relic: General performance monitoring that supports Drupal.  Works nicely with Pantheon.</li>
+			<li>BlazeMeter Module for Load and Performance Testing: General service that works with a plug-in module.</li>
+		</ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">10</span>Drupal-Specific Hosting</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">There are some fine folks out there that will manage the infrastructure for you.  If you don't need to be managing your own software stack, it's probably best to let others do it.  The options over at Drupal-specific hosting: Choose a provider from those offering comprehensive platforms generally include infrastructural features mentioned in this post.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">11</span>Tools</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">There are several tools available for tracking your performance.</p>
+
+		<ul>
+			<li>The Performance and Scalability Checklist module</li>
+			<li>The Performance Logging and Monitoring module</li>
+			<li>Slow query logging with the Devel module</li>
+			<li>The XHProf PHP profiler</li>
+		</ul>
+          </div>
+        </div>     
+      </div>
+
+
+ </div>
+     
+ 
+</div>
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="../js/index.js"></script>

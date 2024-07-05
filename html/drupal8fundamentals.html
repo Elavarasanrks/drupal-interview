@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container-fluid">
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <a class="active" href="../index.html"><i class="glyphicon glyphicon-home"></i></a>
+        <div class="nav-header" style="text-align: center;width:auto">Drupal Interview</div>
+        
+    </nav>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="drupal8.html">Drupal 8</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Fundamentals Concepts</li>
+      </ol>
+    </nav>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">1</span>Theme engine in Drupal8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Drupal 8 provides a new theming engine called Twig, which is a PHP-based theme engine and it is flexible, fast, and secure.            
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">2</span>Which framework drupal 8 is using?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Symfony framework.            
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">3</span>Module and theme folder structure?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            In drupal 8 module and theme folder is available in project root folder.            
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">4</span>What is the use of modules and themes folder indside the site folder?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            If we need to create a multisite, then we can seperate the site specific modules and themes by placing the module and theme folder inside the site specific folder.            
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">5</span>What is composer?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Composer is a tool to download the dependency 3rd party libraries.Drupal site builds can use Composer to manage the various modules the site is composed of.            
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">6</span>REST Request Fundamentals in Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+           <ul>
+             <li>Safe HTTP Methods (read-only):</li>
+             <li>GET - Request data from a URI</li>
+             <li>HEAD - Retrieve headers from a URI</li>
+             <li>OPTIONS - Request available communication options</li>
+             <li>TRACE - Echoes back request sent to server</li>
+             <li>Unsafe HTTP Methods (write)</li>
+             <li>CONNECT - Opens a raw connection to a host through a proxy chain</li>
+             <li>DELETE - Requests that a server delete the resource at URI</li>
+             <li>PATCH - Request changes on a URI</li>
+             <li>POST - Submit data to a URI</li>
+             <li>PUT - Request submitted data be stored under a URI</li>            
+           </ul>           
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">7</span>Authentication in RESTful Web Services?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+           <ul>
+             <li>basic - The quickest way to get started is to use basic HTTP Authentication. Enable the Basic Auth module found in core, then send your drupal username and password using HTTP Authorization Headers</li>
+             <li>cookie - Use the cookie granted to an authenticated user.</li>
+           </ul>           
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">8</span>List of git commands.</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>             
+git config : The git config command is a convenience function that is used to set Git configuration values on a global or local project level. These configuration levels correspond to .gitconfig text files. Executing git config will modify a configuration text file.
+              -- git config user.email
+
+git init : This command is used to start a new repository.
+            -- git init [repository name]
+
+git clone : This command is used to obtain a repository from an existing URL.
+            -- git clone [url]
+
+git add : This command adds one or more files to the staging area.
+          -- git add [file] (or) git add *
+
+git commit : 
+  This command records or snapshots the file permanently in the version history.
+  -- git commit -m "[ Type in the commit message]" 
+  This command commits any files you’ve added with the git add command and also commits any files you’ve changed since then. 
+  -- git commit -a 
+
+git diff : 
+  This command shows the file differences which are not yet staged.
+  -- git diff
+  This command shows the differences between the files in the staging area and the latest version present.
+  -- git diff –staged
+  This command shows the differences between the two branches mentioned.
+  -- git diff [first branch] [second branch]     
+
+git reset : 
+  This command unstages the file, but it preserves the file contents.
+  -- git reset [file]
+  This command undoes all the commits after the specified commit and preserves the changes locally.
+  -- git reset [commit]
+  This command discards all history and goes back to the specified commit.
+  -- git reset –hard [commit]
+
+git status : This command lists all the files that have to be committed.
+              -- git status
+
+git rm : This command deletes the file from your working directory and stages the deletion.
+          -- git rm [file]
+
+git log : 
+  This command is used to list the version history for the current branch.
+  -- git log
+  This command lists version history for a file, including the renaming of files also.
+  -- git log –follow[file]
+
+git show : This command shows the metadata and content changes of the specified commit.
+            -- git show [commit]
+
+git tag : This command is used to give tags to the specified commit.
+          -- git tag [commitID]
+
+git branch : 
+  This command lists all the local branches in the current repository.
+  -- git branch
+  This command creates a new branch.
+  -- git branch [branch name]
+  This command deletes the feature branch.
+  git branch -d [branch name]
+  
+    
+git checkout : 
+  This command is used to switch from one branch to another.
+  -- git checkout [branch name]
+  This command creates a new branch and also switches to it.
+  -- git checkout -b [branch name]
+
+git merge : 
+  This command merges the specified branch's history into the current branch.
+  -- git merge [branch name]
+
+git remote : This command is used to connect your local repository to the remote server.
+              -- git remote add [variable name] [Remote Server Link]
+    
+git push : 
+  This command sends the committed changes of master branch to your remote repository.
+  -- git push [variable name] master
+  This command sends the branch commits to your remote repository.
+  -- git push [variable name] [branch]
+  This command pushes all branches to your remote repository.
+  -- git push –all [variable name] 
+  This command deletes a branch on your remote repository.
+  -- git push [variable name] :[branch name]     
+
+git pull : This command fetches and merges changes on the remote server to your working directory.
+            -- git pull [Repository Link]  
+
+git stash : 
+  This command temporarily stores all the modified tracked files.
+  -- git stash save 
+  This command restores the most recently stashed files.
+  -- git stash pop
+  This command lists all stashed changesets.
+  -- git stash list
+  This command discards the most recently stashed changeset.
+  -- git stash drop              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">9</span>One of your team member cloned the site and started working and makes the wrong commit. How do you solve this issue?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          Using the below comments, we can revert the code,
+          <p>Git log, Git reset--hard</p>
+          </div>
+        </div>     
+      </div>
+      
+
+ </div>
+</div>
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="../js/index.js"></script>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Drupal Interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  
+    
+</head>
+<body>
+
+<div class="container-fluid">
+    
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <a class="active" href="../index.html"><i class="glyphicon glyphicon-home"></i></a>
+    <div class="nav-header" style="text-align: center;width:auto">Drupal Interview</div>
+    
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="drupal8.html">Drupal 8</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Back End</li>
+    </ol>
+  </nav>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">1</span>What are all the symfony components used by Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  ClassLoader
+  Console
+  CssSelector
+  Debug
+  DependencyInjection
+  EventDispatcher
+  HttpFoundation
+  HttpKernel
+  PHPUnit Bridge
+  Polyfill Iconv
+  Process
+  Routing
+  Serializer
+  Translation
+  Validator
+  Yaml 
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">2</span>What is an alternative method for hook_init() in Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            We can use the event subscriber to achive the hook_init().
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">3</span>What is event subscriber?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Event subscriber is a functions that react to an event being propagated throughout the Event Registry.
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">4</span>What is twig debug mode and how to enable it?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            The usage of twig debug is, we can see the list of templates files for particular section in the page view source. We can enable it in the services.yml file by updating debug: true in the parameter twig.config section.
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">5</span>How to create a custom page programmatically?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Create routing file example/example.routing.yml and add the below line,
+<pre>
+  example.my_page:
+    path: '/mypage/page'
+    defaults:
+      _controller: '\Drupal\example\Controller\ExampleController::myPage'
+      _title: 'My first page in D8'
+    requirements:
+      _permission: 'access content'
+</pre>
+    Create a file ExampleController.php inside "example/src/Controller/ExampleController.php" and add below line,
+<pre>
+  namespace Drupal\example\Controller;
+    
+  use Drupal\Core\Controller\ControllerBase;
+  
+  class ExampleController extends ControllerBase {
+      
+    public function myPage() {
+      $element = array(
+        '#markup' => 'Hello, world',
+      );
+      return $element;
+    }
+  }
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">6</span>What is namespace?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            namespace is an identifier of a class in the file.
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">7</span>What is the use of "use" keyword and usage?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>use is a keyword to include the class or file.</li>
+              <li>For code performence, use the keyword 'use' in the top of the line to call the class instead of calling the class directly in the function.</li>
+            </ul>
+            
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">8</span>How to create a custom form programmatically?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            Create routing file "custom_form.routing.yml" and add the below code
+<pre>
+  custom_form.simple_form:
+    path: '/form/simple-form'
+    defaults:
+      _form:  '\Drupal\custom_form\Form\SimpleForm'
+      _title: 'Simple form'
+    requirements:
+      _permission: 'access content'  
+</pre>  
+<p>		
+Create a file "SimpleForm.php" inside "custom_form/src/Form" and add the below code	
+</p>
+
+<pre>
+    
+namespace Drupal\custom_form\Form;
+
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+
+class SimpleForm extends FormBase {
+
+  public function buildForm(array $form, FormStateInterface $form_state) {
+
+    $form['description'] = [
+      '#type' => 'item',
+      '#markup' => $this->t('This basic example shows a single text input element and a submit button'),
+    ];
+
+    $form['title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Title'),
+      '#description' => $this->t('Title must be at least 5 characters in length.'),
+      '#required' => TRUE,
+    ];
+
+    $form['actions'] = [
+      '#type' => 'actions',
+    ];
+
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Submit'),
+    ];
+
+    return $form;
+  }
+  public function getFormId() {
+    return 'form_api_example_simple_form';
+  }
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $title = $form_state->getValue('title');
+    if (strlen($title) < 5) {
+      // Set an error for the form element with a key of "title".
+      $form_state->setErrorByName('title', $this->t('The title must be at least 5 characters long.'));
+    }
+  }
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    $title = $form_state->getValue('title');
+    $this->messenger()->addMessage($this->t('You specified a title of %title.', ['%title' => $title]));
+  }
+}
+
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">9</span>How to create a custom block programmatically?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+           
+    Create a file "ExampleUppercaseBlock.php" inside "custom_block/Plugin/Block" and add the below code
+    
+<pre>    
+  namespace Drupal\custom_block\Plugin\Block;
+
+  use Drupal\Core\Block\BlockBase;	
+
+  class ExampleUppercaseBlock extends BlockBase {
+  
+    /**
+      * {@inheritdoc}
+    */
+    public function build() {
+      return [
+        '#markup' => $this->t("This block's title is changed to uppercase. Any block title which contains 'uppercase' will also be changed to uppercase."),
+      ];
+    }
+  }
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">10</span>How node ID is managed in the multi-language site?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            In the multi-language sites, node ID will be same for all languages for particular content but language ID will be different.
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">11</span>Basic field types in Drupal8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+<table>
+<tr>
+<th>General</th>
+<th>Number</th>
+<th>Reference</th>
+<th>Text</th>
+</tr>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>List (float)</td>
+<td>Content</td>
+<td>List (Text)</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>List (integer)</td>
+<td>File</td>
+<td>Text (formatted)</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Number (decimal)</td>
+<td>Image</td>
+<td>Text (formatted, long)</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Number (float)</td>
+<td>Taxonomy Term</td>
+<td>Text (formatted, long, with summary)</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Number (integer)</td>
+<td>User</td>
+<td>Text (plain)</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td></td>
+<td>Other...</td>
+<td>Text (plain, long)</td>
+</tr>
+</tbody>
+</table>
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">12</span>How to include the comment for content type in Drupal8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">Including comment for a content type in drupal 8 is different from drupal 7.In drupal 8, comment is introduced as an entity type. We can add more comment type with different fields and attach into content type.</p>
+            <p class="answer">By default, 'Default comments' type is available. If we want to create new content type, Go to Structure->Comment types, and click 'Add comment type'.</p>
+            <p class="answer">For attaching the comment type into content type, Go to Basic page or any content type and in the manage fields add field with comment data type and choose comment type.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">13</span>Web Services in Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <p class="answer">The RESTful Web Services API is new in Drupal 8. Expose entities as REST resources either to build a decoupled Drupal site, to let a native mobile iOS/Android app talk consume/feed a Drupal site, or to integrate with some web service.</p>
+  <p class="answer">The following Web Services modules are available in core:</p>
+  <p class="answer">HAL - Serializes entities using Hypertext Application Language.</p>
+  <p class="answer">HTTP Basic Authentication - Provides the HTTP Basic authentication provider based on Drupal user names and passwords.</p>
+  <p class="answer">RESTful Web Services - Enables Web Services</p>
+  <p class="answer">Serialization - Serializes data via xml/json.</p>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">14</span>How many ways to create a node in drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  // You can use the static create() method if you know the entity class.
+  $node = Node::create([
+    'type' => 'article',
+    'title' => 'The node title',
+  ]);
+  $node->save();
+  
+  // Use the entity type manager (recommended).
+  $node = \Drupal::entityTypeManager()->getStorage('node')->create(['type' => 'article', 'title' => 'Another node']);
+
+  // Or use the procedural wrapper (deprecated).
+  $node = entity_create('node', [
+    'title' => 'My node',
+    'body' => 'The body content. This just works like this due to the new Entity Field
+              API. It will be assigned as the value of the first field item in the
+              default language.',
+  ]);
+  $node->save();             
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">15</span>How to load the node?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>             
+  // Use the static method
+  $node = Node::load(1);
+  $title = $node->get('title')->getvalue();      
+        
+  // Using the storage controller (recommended).
+  $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load(1);
+  
+  // Load multiple entities, also exists as entity_load_multiple().
+  $entities = \Drupal::entityTypeManager()->getStorage($entity_type)->loadMultiple([1, 2, 3]);
+  
+  // Load entities by their property values.
+  $entities = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'article']);              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">16</span>How to delete the node?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  $nids = [1,2,3,4]; 
+  $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+  \Drupal::entityTypeManager()->getStorage('node')->delete($nodes);              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">17</span>How to check the field exists or not in the content type?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>              
+  $field_config = \Drupal\field\Entity\FieldConfig::loadByName('node', 'node_type' , 'field_name');
+  if(isset($field_config)) {
+    // Field exists
+  }
+  else {
+    // Field not exists
+  }              
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">18</span>How do we get the field value 'title' in formSubmit function?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          <pre>$form_state->getValue('title')</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">19</span>What are the mandatory parameters in a module.info.yml?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          <ul>
+            <li>name</li>
+            <li>core</li>
+            <li>type</li>
+          </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">20</span>What's the coding standard for class constants?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  class Foo {
+    const CONSTANT_VALUE = 'bar';
+  }
+</pre>>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">21</span>List of Kernel Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          <ul>
+            <li>KernelEvents::CONTROLLER; // The CONTROLLER event occurs once a controller was found for handling a request.</li>
+            <li>KernelEvents::EXCEPTION; // The EXCEPTION event occurs when an uncaught exception appears.</li>
+            <li>KernelEvents::FINISH_REQUEST; //The FINISH_REQUEST event occurs when a response was generated for a request.</li>
+            <li>KernelEvents::REQUEST; // The REQUEST event occurs at the very beginning of request dispatching.</li>
+            <li>KernelEvents::RESPONSE; // The RESPONSE event occurs once a response was created for replying to a request.</li>
+            <li>KernelEvents::TERMINATE; // The TERMINATE event occurs once a response was sent.</li>
+            <li>KernelEvents::VIEW; // The VIEW event occurs when the return value of a controller is not a Response instance.</li>
+          </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">22</span>List of Config Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>ConfigEvents::COLLECTION_INFO; // Name of event fired to collect information on all config collections.</li>
+              <li>ConfigEvents::DELETE; // Name of the event fired when deleting a configuration object.</li>
+              <li>ConfigEvents::IMPORT; // Name of the event fired when importing configuration to target storage.</li>
+              <li>ConfigEvents::IMPORT_VALIDATE; // Name of the event fired when validating imported configuration.</li>
+              <li>ConfigEvents::RENAME; // Name of the event fired when renaming a configuration object.</li>
+              <li>ConfigEvents::SAVE; // Name of the event fired when saving a configuration object.</li>              
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">23</span>List of Console Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>ConsoleEvents::COMMAND; // The COMMAND event allows you to attach listeners before any command is executed by the console. It also allows you to modify the command, input and output before they are handled to the command.</li>
+              <li>ConsoleEvents::EXCEPTION; // The EXCEPTION event occurs when an uncaught exception appears.</li>
+              <li>ConsoleEvents::TERMINATE; //The TERMINATE event allows you to attach listeners after a command is executed by the console.</li>                            
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">24</span>List of EntityType Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>EntityTypeEvents::CREATE; // The name of the event triggered when a new entity type is created.</li>
+              <li>EntityTypeEvents::DELETE; // The name of the event triggered when an existing entity type is deleted.</li>
+              <li>EntityTypeEvents::UPDATE; //The name of the event triggered when an existing entity type is updated.</li>                            
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">25</span>List of FieldStorage Definition Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>FieldStorageDefinitionEvents::CREATE; // Name of the event triggered for field storage definition creation.</li>
+              <li>FieldStorageDefinitionEvents::DELETE; // Name of the event triggered for field storage definition deletion.</li>
+              <li>FieldStorageDefinitionEvents::UPDATE; // Name of the event triggered for field storage definition update.</li>                            
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">26</span>List of the Language Config Override Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>LanguageConfigOverrideEvents::DELETE_OVERRIDE; // The name of the event fired when deleting the configuration override.</li>
+              <li>LanguageConfigOverrideEvents::SAVE_OVERRIDE; // The name of the event fired when saving the configuration override.</li>                                       
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">27</span>List of Locale Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>LocaleEvents::SAVE_TRANSLATION; // The name of the event fired when saving a translated string.</li>                                                     
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">28</span>List of Migrate Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>MigrateEvents::IDMAP_MESSAGE; // Name of the event fired when saving a message to the idmap.</li>
+              <li>MigrateEvents::MAP_DELETE; // Name of the event fired when removing an entry from a migration's map.</li>
+              <li>MigrateEvents::MAP_SAVE; // Name of the event fired when saving to a migration's map.</li>
+              <li>MigrateEvents::POST_IMPORT; // Name of the event fired when finishing a migration import operation.</li>
+              <li>MigrateEvents::POST_ROLLBACK; // Name of the event fired when finishing a migration rollback operation.</li>
+              <li>MigrateEvents::POST_ROW_DELETE; // Name of the event fired just after a single item has been deleted.</li>
+              <li>MigrateEvents::POST_ROW_SAVE; // Name of the event fired just after a single item has been imported.</li>
+              <li>MigrateEvents::PRE_IMPORT; // Name of the event fired when beginning a migration import operation.</li>
+              <li>MigrateEvents::PRE_ROLLBACK; // Name of the event fired when beginning a migration rollback operation.</li>
+              <li>MigrateEvents::PRE_ROW_DELETE; // Name of the event fired when about to delete a single item.</li>
+              <li>MigrateEvents::PRE_ROW_SAVE; // Name of the event fired when about to import a single item.</li>
+              <li>ConfigEvents::SAVE; // Name of the event fired when saving a configuration object.</li>                    
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">29</span>List of Render Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>RenderEvents::SELECT_PAGE_DISPLAY_VARIANT; // Name of the event when selecting a page display variant to use.</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">30</span>List of Routing Events?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+            <ul>
+              <li>RoutingEvents::ALTER; // Name of the event fired during route collection to allow changes to routes.</li>
+              <li>RoutingEvents::DYNAMIC; // Name of the event fired during route collection to allow new routes.</li>
+              <li>RoutingEvents::FINISHED; // Name of the event fired to indicate route building has ended.</li>                            
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">31</span>How to Register an Event Subscriber in Drupal 8?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          <p>Most of the hooks from previous versions of Drupal were removed in Drupal 8 in favor of Events. Example: hook_init() or hook_boot() which now can be done by registering an event subscriber.</p>
+          <p>Structure of the custom module folder 'my_event_subscriber'</p>
+<pre>
+  my_event_subscriber/
+    - my_event_subscriber.info.yml
+    - my_event_subscriber.services.yml
+    - src/
+      - EventSubscriber/
+        - MyEventSubscriber.php
+</pre>
+          <p>my_event_subscriber.info.yml file for the module:</p>
+<pre>
+  name: Register an Event Subscriber
+  type: module
+  description: 'Example: How to Register an Event Subscriber in Drupal 8'
+  core: 8.x
+  package: Other
+</pre>
+<p>Define a service tagged with 'event_subscriber' in the my_event_subscriber.services.yml.</p>
+<pre>
+  services:
+    my_event_subscriber:
+      class: '\Drupal\my_event_subscriber\EventSubscriber\MyEventSubscriber'
+      tags:
+        - { name: 'event_subscriber' }
+</pre>
+<p>src/EventSubscriber/MyEventSubscriber.php contains a class that implements \Symfony\Component\EventDispatcher\EventSubscriberInterface</p>
+<pre>
+  /**
+  * @file
+  * Contains \Drupal\my_event_subscriber\EventSubscriber\MyEventSubscriber.
+  */
+
+  namespace Drupal\my_event_subscriber\EventSubscriber;
+
+  use Symfony\Component\HttpKernel\KernelEvents;
+  use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+  use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+  /**
+  * Event Subscriber MyEventSubscriber.
+  */
+  class MyEventSubscriber implements EventSubscriberInterface {
+
+    /**
+    * Code that should be triggered on event specified 
+    */
+    public function onRespond(FilterResponseEvent $event) {
+      // The RESPONSE event occurs once a response was created for replying to a request.
+      // For example you could override or add extra HTTP headers in here
+      $response = $event->getResponse();
+      $response->headers->set('X-Custom-Header', 'MyValue');
+    }
+
+    /**
+    * {@inheritdoc}
+    */
+    public static function getSubscribedEvents() {
+      // For this example I am using KernelEvents constants (see below a full list).
+      $events[KernelEvents::RESPONSE][] = ['onRespond'];
+      return $events;
+    }
+
+  }
+</pre>          
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">32</span>What is the syntax to get the site name using configuration variables?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+<pre>
+  $site_name = \Drupal::config('system.site')->get('name');
+</pre>
+          </div>
+        </div>     
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div style="float: left;margin: 10px;"><h3> <span class="label label-warning">33</span>How will you add the body class with dynamic node id?</h3></div>
+        </div>
+        <div class="modal-body">          
+          <div>
+          In the theme_name.theme file add the below code,
+<pre>
+  function mytheme_preprocess_html(&$variables) {
+    // Add node id to the body class.
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if($node) {
+      $variables['attributes']['class'][] = 'node-' . $node->id();
+    }
+  }            
+</pre>
+          </div>
+        </div>     
+      </div>
+     
+
+ </div>   
+    
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  </div>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="../js/index.js"></script>
